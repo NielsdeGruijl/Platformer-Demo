@@ -1,0 +1,11 @@
+C:\Users\niels\Desktop\school work\Year 2 redo\Term 2\PersonalPortfolio2\PersonalPortfolio2-Repo\PP2-Platformer\Debug\PP2-Platformer.vcxproj.CopyComplete
+C:\Users\niels\Desktop\school work\Year 2 redo\Term 2\PersonalPortfolio2\PersonalPortfolio2-Repo\PP2-Platformer\Debug\PP2-Platformer.exe
+C:\Users\niels\Desktop\school work\Year 2 redo\Term 2\PersonalPortfolio2\PersonalPortfolio2-Repo\PP2-Platformer\Debug\sfml-graphics-d-2.dll
+C:\Users\niels\Desktop\school work\Year 2 redo\Term 2\PersonalPortfolio2\PersonalPortfolio2-Repo\PP2-Platformer\Debug\sfml-window-d-2.dll
+C:\Users\niels\Desktop\school work\Year 2 redo\Term 2\PersonalPortfolio2\PersonalPortfolio2-Repo\PP2-Platformer\Debug\sfml-system-d-2.dll
+C:\Users\niels\Desktop\school work\Year 2 redo\Term 2\PersonalPortfolio2\PersonalPortfolio2-Repo\PP2-Platformer\Debug\freetyped.dll
+C:\Users\niels\Desktop\school work\Year 2 redo\Term 2\PersonalPortfolio2\PersonalPortfolio2-Repo\PP2-Platformer\Debug\zlibd1.dll
+C:\Users\niels\Desktop\school work\Year 2 redo\Term 2\PersonalPortfolio2\PersonalPortfolio2-Repo\PP2-Platformer\Debug\bz2d.dll
+C:\Users\niels\Desktop\school work\Year 2 redo\Term 2\PersonalPortfolio2\PersonalPortfolio2-Repo\PP2-Platformer\Debug\libpng16d.dll
+C:\Users\niels\Desktop\school work\Year 2 redo\Term 2\PersonalPortfolio2\PersonalPortfolio2-Repo\PP2-Platformer\Debug\brotlidec.dll
+C:\Users\niels\Desktop\school work\Year 2 redo\Term 2\PersonalPortfolio2\PersonalPortfolio2-Repo\PP2-Platformer\Debug\brotlicommon.dll
