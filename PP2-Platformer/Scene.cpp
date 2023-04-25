@@ -1,6 +1,6 @@
 #include "Scene.h"
 
-Scene::Scene()
+Scene::Scene(std::string ID)
 {
 
 }
@@ -17,16 +17,21 @@ void Scene::OnSceneLoaded()
 
 void Scene::Update() 
 {
-	for (int i = 0; i < listOfGameObjects.size(); i++) 
+	for (int i = 0; i < gameObjectsInScene.size(); i++) 
 	{
-		listOfGameObjects[i].Update();
+		gameObjectsInScene[i]->Update();
 	}
 }
 
 void Scene::Render(sf::RenderWindow* window) 
 {
-	for (int i = 0; i < listOfGameObjects.size(); i++)
+	for (int i = 0; i < gameObjectsInScene.size(); i++)
 	{
-		listOfGameObjects[i].Render();
+		gameObjectsInScene[i]->Render(window);
 	}
+}
+
+void Scene::AddGameObject(GameObject& objToAdd) 
+{
+	gameObjectsInScene.push_back(&objToAdd);
 }

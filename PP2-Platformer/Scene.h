@@ -7,16 +7,15 @@
 
 class Scene
 {
-private:
-	std::vector<GameObject> listOfGameObjects;
-
-public:
-	Scene();
-	~Scene();
-
-	void OnSceneLoaded();
-	void Update();
-	void Render(sf::RenderWindow* window);
-
-	void InitializeGameObjects();
+	private:
+		std::vector<GameObject*> gameObjectsInScene;
+	
+	public:
+		Scene(std::string ID);
+		~Scene();
+	
+		void OnSceneLoaded();
+		void Update();
+		void Render(sf::RenderWindow* window);
+		void AddGameObject(GameObject& objToAdd);
 };

@@ -1,21 +1,14 @@
 #include "GameObject.h"
 
-GameObject::GameObject() 
+GameObject::GameObject(std::string ID) : ID(ID)
 {
-
 }
 
 GameObject::~GameObject()
 {
-
 }
 
-void GameObject::Update()
+void GameObject::SetScene(Scene* _scene)
 {
-
-}
-
-void GameObject::Render() 
-{
-
+	this->scene = _scene;
 }

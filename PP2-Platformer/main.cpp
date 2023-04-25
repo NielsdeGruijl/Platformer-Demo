@@ -1,13 +1,24 @@
 #include <SFML/Graphics.hpp>
 #include "Scene.h"
+#include "GameObject.h"
+#include "Sprite.h"
+#include "Player.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML works!");
 
-    Scene scene1();
+    Scene* currentScene;
+    Scene scene1("Scene1");
+
+    currentScene = &scene1;
+
+    //Sprite sprite1("Sprite1", "Tofu.png");
+    //sprite1.SetValues(sf::Vector2f(0, 0), sf::Vector2f(1, 1));
+    //scene1.AddGameObject(sprite1);
+
+    Player player("player", "Fighter.png");
+    scene1.AddGameObject(player);
 
     while (window.isOpen())
     {
@@ -19,7 +30,8 @@ int main()
         }
 
         window.clear();
-        scene1().Render(&window);
+        currentScene->Update();
+        currentScene->Render(&window);
         window.display();
     }
 
