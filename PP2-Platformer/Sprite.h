@@ -8,9 +8,14 @@ class Sprite : public GameObject
 {
 	private:
 		sf::Texture texture;
+	public:	
+		bool isPhysicsObject;
+		float xRadius;
+		float yRadius;
 		sf::Sprite sprite;
+
 	public:
-		Sprite(std::string ID, std::string FileName);
+		Sprite(std::string ID, std::string FileName, bool isPhysicsObject);
 		~Sprite();
 
 		void Render(sf::RenderWindow* window) override;

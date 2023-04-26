@@ -1,11 +1,13 @@
 #include "Sprite.h"
 
-Sprite::Sprite(std::string ID, std::string FileName) : GameObject(ID)
+Sprite::Sprite(std::string ID, std::string FileName, bool _isPhysicsObject) : GameObject(ID), isPhysicsObject(_isPhysicsObject)
 {
 	this->texture.loadFromFile(FileName);
 	this->sprite.setTexture(this->texture);
 
-	//this->sprite.setOrigin(this->sprite.getGlobalBounds().width/2, this->sprite.getGlobalBounds().height / 2);
+	this->xRadius = this->sprite.getGlobalBounds().width / 2;
+	this->yRadius = this->sprite.getGlobalBounds().height / 2;
+	this->sprite.setOrigin(xRadius, yRadius);
 }
 
 Sprite::~Sprite()

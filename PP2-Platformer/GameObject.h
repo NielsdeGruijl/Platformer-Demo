@@ -11,7 +11,7 @@ private:
 	const std::string ID;
 	Scene* scene;
 public:
-	GameObject(std::string ID);
+	GameObject(std::string ID, bool isPhysicsObject);
 	~GameObject();
 
 public:
