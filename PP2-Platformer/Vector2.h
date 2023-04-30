@@ -17,7 +17,9 @@ class Vector2
 
 		float GetLength();
 		void Normalize();
-		sf::Vector2f ToSfVector();
+		sf::Vector2f ToSfVector() const;
 		
 		Vector2 operator*(float f1);
+		Vector2 operator+(Vector2 v2);
+		Vector2 operator-(Vector2 v2);
 };

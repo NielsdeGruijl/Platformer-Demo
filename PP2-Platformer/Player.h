@@ -1,10 +1,10 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Sprite.h"
+#include "Pawn.h"
 #include "Vector2.h"
 
-class Player : public Sprite
+class Player : public Pawn
 {
 	private:
 		float moveSpeed;
@@ -13,12 +13,12 @@ class Player : public Sprite
 		sf::Time lastFrameTimeElapsed;
 		float deltaTime;
 	public:
-		Player(std::string ID, std::string FileName, float speed, bool isPhysicsObject);
+		Player(std::string ID, std::string FileName, float speed);
 		~Player();
 
 		void Update() override;
 
 		void Input();
-		void Move();
+		void MovePlayer();
 		void CalculateDeltaTime();
 };

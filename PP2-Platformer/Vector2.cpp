@@ -26,6 +26,16 @@ Vector2 Vector2::operator*(float f1)
 	return Vector2(x * f1, y * f1);
 }
 
+Vector2 Vector2::operator+(Vector2 v2)
+{
+	return Vector2(x + v2.x, y + v2.y);
+}
+
+Vector2 Vector2::operator-(Vector2 v2)
+{
+	return Vector2(x - v2.x, y - v2.y);
+}
+
 float Vector2::GetLength()
 {
 	return sqrtf(x * x + y * y);
@@ -39,7 +49,7 @@ void Vector2::Normalize()
 	y /= length;
 }
 
-sf::Vector2f Vector2::ToSfVector()
+sf::Vector2f Vector2::ToSfVector() const
 {
 	return sf::Vector2f(x, y);
 }

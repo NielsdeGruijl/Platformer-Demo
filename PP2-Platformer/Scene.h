@@ -2,14 +2,14 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-#include "Sprite.h"
+#include "Pawn.h"
 #include "GameObject.h"
 
 class Scene
 {
 	private:
 		std::vector<GameObject*> gameObjectsInScene;
-		std::vector<GameObject*> physicsObjectsInScene;
+		std::vector<Pawn*> physicsObjectsInScene;
 	
 	public:
 		Scene(std::string ID);
@@ -20,6 +20,9 @@ class Scene
 		void Render(sf::RenderWindow* window);
 		void AddGameObject(GameObject& objToAdd);
 
-		int CheckAABB(Sprite& a, Sprite& b);
-		void CollisionResponse(Sprite& a, Sprite& b);
+		void CheckAABB(Pawn* a, GameObject*);
+		void CheckCollisionDirection(Pawn* a, GameObject* b);
+		void CollisionResponse(Pawn* a, GameObject* b);
+
+		const std::vector<GameObject*> GetGameObjectsInScene();
 };

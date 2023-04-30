@@ -10,17 +10,18 @@ class Sprite : public GameObject
 		sf::Texture texture;
 	public:	
 		bool isPhysicsObject;
-		float xRadius;
-		float yRadius;
+		//float xRadius;
+		//float yRadius;
 		sf::Sprite sprite;
 
 	public:
-		Sprite(std::string ID, std::string FileName, bool isPhysicsObject);
+		Sprite(std::string ID, std::string FileName);
 		~Sprite();
 
 		void Render(sf::RenderWindow* window) override;
 		void Update() override;
+		void SetPosition(const Vector2 pos) override;
 
-		void SetValues(sf::Vector2f position);
-		void SetValues(sf::Vector2f position, sf::Vector2f size);
+		void SetPos(sf::Vector2f position);
+		void SetSize(sf::Vector2f size);
 };

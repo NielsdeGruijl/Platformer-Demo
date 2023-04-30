@@ -13,13 +13,13 @@ int main()
 
     currentScene = &scene1;
 
-    //Sprite sprite1("Sprite1", "Tofu.png");
-    //sprite1.SetValues(sf::Vector2f(0, 0), sf::Vector2f(1, 1));
-    //scene1.AddGameObject(sprite1);
-
-    Player player("player", "Fighter.png", 300, true);
-    player.SetValues(sf::Vector2f(640, 360));
+    Player player("player", "Fighter.png", 300);
+    player.SetPos(sf::Vector2f(100, 300));
     scene1.AddGameObject(player);
+
+    Sprite sprite("Square", "Square.png");
+    sprite.SetPos(sf::Vector2f(500, 300));
+    scene1.AddGameObject(sprite);
 
     while (window.isOpen())
     {
@@ -32,7 +32,7 @@ int main()
 
         window.clear();
 
-        window.setFramerateLimit(60);
+        window.setFramerateLimit(144);
         currentScene->Update();
         currentScene->Render(&window);
         window.display();

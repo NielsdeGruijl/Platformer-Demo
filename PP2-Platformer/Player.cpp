@@ -1,12 +1,16 @@
-#include "Player.h"
 #include <iostream>
+
+#include "Player.h"
+#include "Scene.h"
 
 
 using sf::Keyboard;
 
-Player::Player(std::string ID, std::string FileName, float _speed, bool _isPhysicsObject) 
-	: Sprite(ID, FileName, _isPhysicsObject), moveSpeed(_speed)
+Player::Player(std::string ID, std::string FileName, float _speed) 
+	: Pawn(ID, FileName), moveSpeed(_speed)
 {
+	this->moveDir = Vector2(0, 0);
+	this->goDirection = this->moveDir;
 }
 
 Player::~Player()
@@ -17,7 +21,7 @@ void Player::Update()
 {
 	CalculateDeltaTime();
 	Input();
-	Move();
+	MovePlayer();
 }
 
 void Player::Input()
@@ -49,18 +53,18 @@ void Player::Input()
 	}
 }
 
-void Player::Move()
+void Player::MovePlayer()
 {
 	moveDir.Normalize();
 
 	Vector2 dir = moveDir * moveSpeed * deltaTime;
+	this->goDirection = this->moveDir;
 
 	if (dir.GetLength() > 0) 
 	{
-		this->sprite.move(dir.ToSfVector());
+		Move(dir);
+		sf::Vector2f spritePos = this->sprite.getPosition();
 	}
-	
-
 	//std::cout << this->sprite.getPosition().x << this->sprite.getPosition().y << '\n';
 }
 
@@ -69,5 +73,5 @@ void Player::CalculateDeltaTime()
 	deltaTime = elapsedTime.getElapsedTime().asSeconds() - lastFrameTimeElapsed.asSeconds();
 	lastFrameTimeElapsed = elapsedTime.getElapsedTime();
 
-	std::cout << deltaTime << '\n';
+	//std::cout << deltaTime << '\n';
 }
