@@ -32,7 +32,7 @@ int main()
 
         window.clear();
 
-        window.setFramerateLimit(144);
+        //window.setFramerateLimit(144);
         currentScene->Update();
         currentScene->Render(&window);
         window.display();

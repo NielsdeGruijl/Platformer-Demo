@@ -23,6 +23,7 @@ Vector2 Pawn::GetLastPosition() const
 
 void Pawn::Move(const Vector2 movement)
 {
+	LastPos = this->goPosition;
 	this->sprite.move(movement.ToSfVector());
-	this->goPosition = goPosition + movement;
+	this->goPosition = Vector2(goPosition + movement);
 }

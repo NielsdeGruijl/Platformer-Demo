@@ -23,9 +23,9 @@ Vector2 GameObject::GetPosition() const
 	return goPosition;
 }
 
-Vector2 GameObject::GetSize() const
+Vector2 GameObject::GetRadius() const
 {
-	return goSize;
+	return goRadius;
 }
 
 Vector2 GameObject::GetDirection() const

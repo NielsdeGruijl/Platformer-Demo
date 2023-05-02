@@ -42,11 +42,11 @@ void Sprite::SetSize(sf::Vector2f size)
 {
 	this->sprite.setScale(size);
 
-	//this->xRadius = this->sprite.getGlobalBounds().width / 2;
-	//this->yRadius = this->sprite.getGlobalBounds().height / 2;
-	//this->sprite.setOrigin(xRadius, yRadius);
+	this->xRadius = this->sprite.getGlobalBounds().width / 2;
+	this->yRadius = this->sprite.getGlobalBounds().height / 2;
+	this->sprite.setOrigin(xRadius, yRadius);
 
-	this->goSize.x = this->sprite.getGlobalBounds().width;
-	this->goSize.y = this->sprite.getGlobalBounds().height;
+	this->goRadius.x = this->xRadius;
+	this->goRadius.y = this->yRadius;
 }
 

@@ -14,7 +14,7 @@ private:
 protected:
 	Scene* scene = 0;
 	Vector2 goPosition;
-	Vector2 goSize;
+	Vector2 goRadius;
 	Vector2 goDirection;
 public:
 	GameObject(std::string ID);
@@ -26,6 +26,6 @@ public:
 
 	virtual void SetPosition(const Vector2 pos);
 	Vector2 GetPosition() const;
-	Vector2 GetSize() const;
+	Vector2 GetRadius() const;
 	Vector2 GetDirection() const;
 };

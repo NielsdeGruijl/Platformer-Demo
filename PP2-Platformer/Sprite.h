@@ -10,8 +10,8 @@ class Sprite : public GameObject
 		sf::Texture texture;
 	public:	
 		bool isPhysicsObject;
-		//float xRadius;
-		//float yRadius;
+		float xRadius;
+		float yRadius;
 		sf::Sprite sprite;
 
 	public:
