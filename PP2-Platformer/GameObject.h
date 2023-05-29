@@ -15,7 +15,6 @@ protected:
 	Scene* scene = 0;
 	Vector2 goPosition;
 	Vector2 goRadius;
-	Vector2 goDirection;
 public:
 	GameObject(std::string ID);
 	~GameObject();
@@ -24,8 +23,9 @@ public:
 	virtual void Render(sf::RenderWindow* window) = 0;
 	void SetScene(Scene* scene);
 
+	std::string GetID();
+
 	virtual void SetPosition(const Vector2 pos);
 	Vector2 GetPosition() const;
 	Vector2 GetRadius() const;
-	Vector2 GetDirection() const;
 };

@@ -21,7 +21,7 @@ class Sprite : public GameObject
 		void Render(sf::RenderWindow* window) override;
 		void Update() override;
 		void SetPosition(const Vector2 pos) override;
-
-		void SetPos(sf::Vector2f position);
-		void SetSize(sf::Vector2f size);
+		
+		void SetColor(sf::Color color);
+		void SetSize(Vector2 size);
 };

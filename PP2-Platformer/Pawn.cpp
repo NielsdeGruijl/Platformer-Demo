@@ -10,20 +10,38 @@ Pawn::~Pawn()
 {
 }
 
+void Pawn::Update()
+{
+	CalculateDeltaTime();
+}
+
 void Pawn::SetPosition(const Vector2 pos)
 {
-	LastPos = this->goPosition;
 	Sprite::SetPosition(pos);
 }
 
 Vector2 Pawn::GetLastPosition() const
 {
-	return LastPos;
+	return lastPos;
+}
+
+void Pawn::SetLastPosition(const Vector2 newLastPos)
+{
+	lastPos = newLastPos;
 }
 
 void Pawn::Move(const Vector2 movement)
 {
-	LastPos = this->goPosition;
+	lastPos = this->goPosition;
+	
 	this->sprite.move(movement.ToSfVector());
-	this->goPosition = Vector2(goPosition + movement);
+	this->goPosition = goPosition + movement;
+}
+
+void Pawn::CalculateDeltaTime()
+{
+	deltaTime = elapsedTime.getElapsedTime().asSeconds() - lastFrameTimeElapsed.asSeconds();
+	lastFrameTimeElapsed = elapsedTime.getElapsedTime();
+
+	//std::cout << deltaTime << '\n';
 }

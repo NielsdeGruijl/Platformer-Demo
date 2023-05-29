@@ -28,7 +28,7 @@ Vector2 GameObject::GetRadius() const
 	return goRadius;
 }
 
-Vector2 GameObject::GetDirection() const
+std::string GameObject::GetID()
 {
-	return goDirection;
+	return ID;
 }

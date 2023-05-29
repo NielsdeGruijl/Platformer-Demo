@@ -4,16 +4,8 @@
 
 #include "Pawn.h"
 #include "GameObject.h"
-
-enum CollisionSide
-{
-	noCol,
-	left,
-	right,
-	top,
-	bottom
-	
-};
+#include "AABBCollision.h"
+#include "Player.h"
 
 
 class Scene
@@ -21,23 +13,8 @@ class Scene
 	private:
 		std::vector<GameObject*> gameObjectsInScene;
 		std::vector<Pawn*> physicsObjectsInScene;
-		
-		CollisionSide colDir;
 
-		bool horizontalParallel, verticalParallel;
-		std::vector<Vector2> intersections;
-		Vector2 bRadius;
-		float bLeft;
-		float bRight;
-		float bTop;
-		float bBottom;
-	
-	private:
-		void CalculateIntersection(Pawn* pA, CollisionSide colSide);
-		void HandleIntersection(CollisionSide colSide, float intersectPos);
-		void CheckAABB(Pawn* pA, GameObject* goB);
-		void CheckCollisionDirection(Pawn* pA, GameObject* goB);
-		void CollisionResponse(Pawn* pA, GameObject* goB);
+		AABBCollision collisionChecker;
 
 	public:
 		Scene(std::string ID);

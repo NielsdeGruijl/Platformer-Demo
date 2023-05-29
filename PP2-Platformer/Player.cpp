@@ -3,14 +3,16 @@
 #include "Player.h"
 #include "Scene.h"
 
-
 using sf::Keyboard;
 
-Player::Player(std::string ID, std::string FileName, float _speed) 
-	: Pawn(ID, FileName), moveSpeed(_speed)
+Player::Player(std::string ID, std::string FileName) : Pawn(ID, FileName)
 {
 	this->moveDir = Vector2(0, 0);
-	this->goDirection = this->moveDir;
+	this->knockbackDir = Vector2(0, 0);
+
+	this->gravity = 100;
+	this->tempGravity = gravity;
+	this->knockbackFalloff = 50;
 }
 
 Player::~Player()
@@ -19,59 +21,97 @@ Player::~Player()
 
 void Player::Update()
 {
-	CalculateDeltaTime();
+	Pawn::Update();
 	Input();
 	MovePlayer();
+
+	//std::cout << isGrounded << '\n';
+}
+
+void Player::SetMovementValues(float speed, float jumpForce)
+{
+	this->moveSpeed = speed;
+	this->jumpForce = jumpForce;
 }
 
 void Player::Input()
 {
-	if (Keyboard::isKeyPressed(Keyboard::W))
+	if (isTakingKnockback) return;
+	if (Keyboard::isKeyPressed(Keyboard::Space) && isGrounded)
 	{
-		moveDir.y = -1;
-	}
-	else if (Keyboard::isKeyPressed(Keyboard::S))
-	{
-		moveDir.y = 1;
-	}
-	else
-	{
-		moveDir.y = 0;
+		tempJumpForce = jumpForce;
+		isJumping = true;
+		isGrounded = false;
+		tempGravity = gravity;
 	}
 
 	if (Keyboard::isKeyPressed(Keyboard::A))
 	{
-		moveDir.x = -1;
+		inputDir = -1;
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::D))
 	{
-		moveDir.x = 1;
+		inputDir = 1;
 	}
 	else
 	{
-		moveDir.x = 0;
+		inputDir = 0;
 	}
+}
+
+void Player::Jump()
+{
+
 }
 
 void Player::MovePlayer()
 {
-	moveDir.Normalize();
-
-	Vector2 dir = moveDir * moveSpeed * deltaTime;
-	this->goDirection = this->moveDir;
-
-	if (dir.GetLength() > 0) 
+	moveDir.x = inputDir * moveSpeed * deltaTime;
+	
+	if (isJumping)
 	{
-		Move(dir);
-		sf::Vector2f spritePos = this->sprite.getPosition();
+		moveDir.y = -tempJumpForce * deltaTime;
+		tempJumpForce -= (gravity * 20) * deltaTime;
+
+		//std::cout << tempJumpForce << '\n';
+
+		if (tempJumpForce <= 0)
+			isJumping = false;
 	}
-	//std::cout << this->sprite.getPosition().x << this->sprite.getPosition().y << '\n';
+
+	if (!isGrounded && !isJumping)
+	{
+		moveDir.y = tempGravity * deltaTime;
+		tempGravity += (gravity * 15) * deltaTime;
+		//std::cout << tempGravity << '\n';
+	}
+	
+	if(isGrounded)
+	{
+		moveDir.y = 0;
+	}
+
+	if (moveDir.GetLength() > 0)
+	{
+		Move(moveDir);
+		sf::Vector2f spritePos = this->sprite.getPosition();
+		//std::cout << spritePos.x << ", " << spritePos.y << '\n';
+	}
+
+	if (isTakingKnockback)
+	{
+		Move(knockbackDir * tempKnockback * deltaTime);
+		tempKnockback -= knockbackFalloff;
+	}
 }
 
-void Player::CalculateDeltaTime()
+void Player::ResetJumpForce()
 {
-	deltaTime = elapsedTime.getElapsedTime().asSeconds() - lastFrameTimeElapsed.asSeconds();
-	lastFrameTimeElapsed = elapsedTime.getElapsedTime();
+	tempJumpForce = 0;
+}
 
-	//std::cout << deltaTime << '\n';
+void Player::TakeKnockback(float knockbackForce, Vector2 dir)
+{
+	tempKnockback = knockbackForce;
+	isTakingKnockback = true;
 }

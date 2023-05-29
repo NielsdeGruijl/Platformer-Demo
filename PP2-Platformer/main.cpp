@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "Sprite.h"
 #include "Player.h"
+#include "Enemy.h"
 
 int main()
 {
@@ -13,13 +14,39 @@ int main()
 
     currentScene = &scene1;
 
-    Player player("player", "Fighter.png", 300);
-    player.SetPos(sf::Vector2f(100, 300));
+    
+    Sprite platform("PlatformLeft", "Square.png");
+    platform.SetPosition(Vector2(150, 500));
+    platform.SetSize(Vector2(3, 0.25f));
+    scene1.AddGameObject(platform);
+
+    Sprite platform1("PlatformRight", "Square.png");
+    platform1.SetPosition(Vector2(1130, 500));
+    platform1.SetSize(Vector2(3, 0.25f));
+    scene1.AddGameObject(platform1);
+
+    Sprite platform2("PlatformMiddle", "Square.png");
+    platform2.SetPosition(Vector2(640, 320));
+    platform2.SetSize(Vector2(5, 0.25f));
+    scene1.AddGameObject(platform2);
+
+    Enemy enemy("Enemy", "Enemy.png", 390, 890);
+    enemy.SetPosition(Vector2(640, 280));
+    scene1.AddGameObject(enemy);
+
+    Sprite floor("Floor", "Square.png");
+    floor.SetPosition(Vector2(640, 670));
+    floor.SetSize(Vector2(12.8f, 1));
+    floor.SetColor(sf::Color::Green);
+    scene1.AddGameObject(floor);
+
+    Player player("Player", "Square.png");
+    player.SetMovementValues(300, 1000);
+    player.SetPosition(Vector2(150, 360));
+    player.SetColor(sf::Color::Blue);
     scene1.AddGameObject(player);
 
-    Sprite sprite("Square", "Square.png");
-    sprite.SetPos(sf::Vector2f(500, 300));
-    scene1.AddGameObject(sprite);
+    //std::cout << player.sprite.getGlobalBounds().width << player.sprite.getGlobalBounds().height << '\n';
 
     while (window.isOpen())
     {
