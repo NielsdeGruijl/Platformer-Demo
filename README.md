@@ -19,7 +19,7 @@ The way it is set up is as follows: the Scene class is a level that contains a l
 
 To take a look at the demo simply download the project and run the executable.
 
-CONTROLS
+CONTROLS  
 A - move left  
 D - move right  
 Spacebar - Jump  
